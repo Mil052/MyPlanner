@@ -1,0 +1,86 @@
+:host {
+    margin: 8px;
+}
+section {
+    height: 100%;
+    overflow: hidden;
+    font-family: 'Roboto', sans-serif;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: min-content;
+    gap: 8px;
+
+    .task {
+        &:nth-child(4n) {
+            background-color: #465E70;
+            color: white;
+        }
+        &:nth-child(4n + 1) {
+            background-color: #D7C495;
+        }
+        &:nth-child(4n + 2) {
+            background-color: #B1C586;
+        }
+        &:nth-child(4n + 3) {
+            background-color: #C7ACCB;
+        }
+        min-width: 288px;
+        header {
+            display: flex;
+            justify-content: space-between;
+            background-color: #434343;
+            padding: 4px;
+            div {
+                font-size: 20px;
+                line-height: 22px;
+                color: white;
+                margin-left: 1rem;
+            }
+            button {
+                flex: 0 0 22px;
+                height: 22px;
+                border: none;
+                padding: 0;
+                background-color: #D9D9D9;
+                background-image: url("../../../assets/x-button.svg");
+                background-size: contain;
+            }
+        }
+        .task_data {
+            display: flex;
+            justify-content: space-between;
+            .task_description {
+                min-width: 204px;
+                margin: 4px;
+                h4 {
+                    font-size: 20px;
+                    font-weight: 500;
+                    margin: 4px 0;
+                }
+            }
+            .task_img {
+                display: flex;
+                max-width: 200px;
+                min-width: 154px;
+                min-height: 6rem;
+                gap: 4px;
+                margin: 4px;
+                img {
+                    object-fit: cover;
+                    flex: 1 0 75px;
+                    min-width: 75px;
+                    min-height: 80px;
+                }
+            }
+            .vertical {
+                flex-direction: column;
+            }
+        }
+    }
+
+    .large {
+        .task_img {
+            flex-direction: column;
+        }
+    }
+}

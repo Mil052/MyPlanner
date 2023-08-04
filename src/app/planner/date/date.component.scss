@@ -1,0 +1,70 @@
+:host {
+    min-width: 390px;
+}
+
+section {
+    font-family: 'Roboto', sans-serif;
+    margin-top: 8px;
+}
+
+.month_picker {
+    background-color: #D9D9D9;
+    padding: 4px 1rem;
+    display: flex;
+    justify-content: space-between;
+    font-size: 24px;
+    line-height: 30px;
+    font-weight: 500;
+    div {
+        margin: 0 1rem;
+        width: 100%;
+        margin: 0 8px;
+        display: flex;
+        justify-content: space-around;
+    }
+    
+    button {
+        flex: 0 0 26px;
+        height: 30px;
+        border: none;
+        padding: 0;
+        background-color: transparent;
+        &.previous {
+            background-image: url("../../../assets/prev-button.svg");
+        }
+        &.next {
+            background-image: url("../../../assets/next-button.svg");
+        }
+    }
+}
+
+.year {
+    color: white;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 400;
+    text-align: center;
+    background-color: #434343;
+}
+
+.day_picker {
+    padding: 4px 1rem;
+    background-color: #D9D9D9;
+    div {
+        font-size: 24px;
+        font-weight: 500;
+        line-height: 30px;
+        white-space: nowrap;
+        overflow: hidden;
+        span {
+            display: inline-block;
+            text-align: center;
+            width: 34px;
+            margin: 0 3px;
+        }
+    }
+}
+
+.active {
+    color: #B24027;
+}

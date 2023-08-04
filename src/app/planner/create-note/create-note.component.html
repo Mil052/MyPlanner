@@ -1,0 +1,27 @@
+<div class="backdrop">
+    <section class="container">
+        <header class="note_header">
+            <img src="../../../assets/writing_icon.svg" alt="Note icon">
+            <h4>Add your note!</h4>
+        </header>
+        <form [formGroup]="noteForm">
+                <label>Title: </label>
+                <input type="text" id="task_title" formControlName="title">
+                <div class="validity_error">
+                    <span *ngIf="controlIsNotValid('title')">Title must be at least 6 characters</span>
+                </div>
+                <label>Description: </label>
+                <textarea id="task_description" formControlName="description"></textarea>
+                <label>Add image: </label>
+                <div formArrayName="images" class="task_images">
+                    <input type="url" class="task_add_img" formControlName="0">
+                    <input type="url" class="task_add_img" formControlName="1">
+                </div>
+         </form>
+        <div class="buttons">
+            <button type="button" (click)="cancelHandler()">CANCEL</button>
+            <button type="button" (click)="saveHandler()">SAVE</button>
+        </div> 
+    </section>
+</div>
+

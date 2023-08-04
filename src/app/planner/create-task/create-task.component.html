@@ -1,0 +1,78 @@
+<div class="backdrop">
+    <section class="container">
+        <div id="date-picker">
+            <div class="date-month">
+                <button type="button" class="previous" (click)="date.previousMonth()"></button>
+                <div class="date-month_display">
+                    <span class="current">{{date.monthName}}</span>
+                    <span>{{date.year}}</span>
+                </div>
+                <button type="button" class="next" (click)="date.nextMonth()"></button>
+            </div>
+            <div class="date-day">
+                <button type="button" class="previous" (click)="date.previousDay()"></button>
+                <div class="date-day_display">
+                    <span *ngFor="let day of date.calculatePreviousDays(2).reverse()">{{day.day}}</span>
+                    <span class="current">{{date.day}}</span>
+                    <span *ngFor="let day of date.calculateNextDays(2)">{{day.day}}</span>
+                </div>
+                <button type="button" class="next" (click)="date.nextDay()"></button>
+            </div>
+        </div>
+        <form [formGroup]="taskForm">
+            <div class="select-hours" formGroupName="hours">
+                <div class="from_hour" formGroupName="from">
+                    <input 
+                        type="number"
+                        (input)="hoursValidationHandler($event, ['from', 'from_hour'], 23)"
+                        min="0"
+                        placeholder="00"
+                        formControlName="from_hour">
+                    :
+                    <input
+                    type="number"
+                    (input)="hoursValidationHandler($event, ['from', 'from_minute'], 59)"
+                    min="0"
+                    formControlName="from_minute"
+                    placeholder="00">
+                </div>
+                <div class="to_hour" formGroupName="to">
+                    <input 
+                        type="number"
+                        (input)="hoursValidationHandler($event, ['to', 'to_hour'], 23)"
+                        min="0"
+                        placeholder="00"
+                        formControlName="to_hour">
+                    :
+                    <input
+                        type="number"
+                        (input)="hoursValidationHandler($event, ['to', 'to_minute'], 59)"
+                        min="0"
+                        formControlName="to_minute"
+                        placeholder="00">
+                </div>
+            </div>
+            <div class="validity_error">
+                <span *ngIf="controlIsNotValid('hours.from') || controlIsNotValid('hours.to')">
+                    Please provide hours in correct format (HH:MM)
+                </span>
+            </div>
+            <label for="task_title">Title: </label>
+            <input type="text" id="task_title" formControlName="title">
+            <div class="validity_error">
+                <span *ngIf="controlIsNotValid('title')">Title must be at least 6 characters</span>
+            </div>
+            <label for="task_description">Description: </label>
+            <textarea id="task_description" formControlName="description"></textarea>
+            <label>Add image URL: </label>
+            <div formArrayName="images" class="task_images">
+                <input type="url" class="task_add_img" formControlName="0">
+                <input type="url" class="task_add_img" formControlName="1">
+            </div>
+        </form>
+        <div class="buttons">
+            <button type="button" (click)="cancelHandler()">CANCEL</button>
+            <button type="button" (click)="saveHandler()">SAVE</button>
+        </div> 
+    </section>
+</div>

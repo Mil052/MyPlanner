@@ -1,0 +1,17 @@
+<section>
+    <div class="month_picker">
+        <button class="previous" (click)="previousMonthHandler()"></button>
+        <div class="active">{{date.monthName}}</div>
+        <button class="next" (click)="nextMonthHandler()"></button>
+    </div>
+    <div class="year">{{date.year}}</div>
+    <div class="day_picker">
+        <div (wheel)="scrollList($event)" #dayPicker>
+            <span *appNumberOfDays="date.monthNumberOfDays[date.month]; let index"
+             [ngClass]="{active: index === date.day}"
+             (click)="pickNewDayHandler(index)">
+                {{index}}
+            </span>
+        </div>
+    </div>
+</section>  

@@ -1,0 +1,36 @@
+<div class="backdrop">
+    <section class="container" *ngIf="element$ | async as element">
+        <header *ngIf="type === 'note'" class="note_header">
+            <img src="../../../assets/writing_icon.svg" alt="Note icon">
+            <h4>Don't Forget ...</h4>
+        </header>
+        <div *ngIf="type === 'task'" class="task_date">
+            <div>
+                <span>{{dateDataObject.day}}</span>
+                <span class="date_month">{{dateDataObject.monthName}}</span>
+                <span>{{dateDataObject.year}}</span>
+            </div>
+            <div><span>{{element.from_hour}}</span> - <span>{{element.to_hour}}</span></div>
+        </div>
+        <div class="description">
+            <h4>{{element.title}}</h4>
+            <p>{{element.description}}</p>
+        </div>
+        <div *ngIf="element.images" class="images">
+            <img *ngFor="let image of element.images; index as i" [src]="image" alt="{{i}} image">
+        </div>
+        <div class="buttons">
+            <button type="button" (click)="openConfirmModal()">DELETE</button>
+            <button type="button" (click)="closeHandler()">CLOSE</button>
+        </div>
+        <div *ngIf="confirmWindow" class="modal_backdrop">
+            <div class="confirm_modal">
+                <h4>Are you sure about that ?</h4>
+                <div class="buttons">
+                    <button type="button" (click)="dismissDeletion()">NO</button>
+                    <button type="button" (click)="deleteElementHandler()" class="button_danger">YES</button>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

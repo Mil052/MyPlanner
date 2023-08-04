@@ -1,0 +1,9 @@
+<section (wheel)="scrollNotes($event)">
+        <div *appFor="let note of notes$ | async; elementId as id" class="note" (click)="openNote(id)">
+            <h4>{{note.title}}</h4>
+            <div class="description">{{note.description}}</div>
+            <div *ngIf="note.images" class="note_img">
+                <img *ngFor="let image of note.images; index as i" [src]="image" alt="{{i}} image">
+            </div>
+        </div>
+</section>

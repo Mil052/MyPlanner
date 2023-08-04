@@ -1,0 +1,17 @@
+<section (wheel)="scrollTaskList($event)">
+    <div *appFor="let task of tasks$ | async; elementId as id" [ngClass]="specifyTaskSizeClass(task)" (click)="openTask(id)">
+        <header>
+            <div>{{task.from_hour}} - {{task.to_hour}}</div>
+            <button type="button"></button>
+        </header>
+        <div class="task_data">
+            <div class="task_description">
+                <h4>{{task.title}}</h4>
+                <div>{{task.description}}</div>
+            </div>
+            <div *ngIf="task.images" class="task_img" [ngClass]="{'vertical': task.images.length === 1}">
+                <img *ngFor="let image of task.images; index as i" [src]="image" alt="{{i}} image">
+            </div>
+        </div>
+    </div>
+</section>
